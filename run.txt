@@ -1,0 +1,2 @@
+cd /workspaces/codespaces-blank/library-management-system/library-api
+mvn spring-boot:run
