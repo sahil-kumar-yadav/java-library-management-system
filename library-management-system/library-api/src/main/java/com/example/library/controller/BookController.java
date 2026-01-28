@@ -2,6 +2,7 @@ package com.example.library.controller;
 
 import com.example.library.entity.Book;
 import com.example.library.service.BookService;
+import com.example.library.dto.PageResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -211,5 +212,100 @@ public class BookController {
     public ResponseEntity<Long> getTotalBooks() {
         long count = bookService.getTotalBooks();
         return new ResponseEntity<>(count, HttpStatus.OK);
+    }
+
+    // ===== PHASE 3: ADVANCED SEARCH & PAGINATION =====
+
+    /**
+     * Search books by title or author
+     * HTTP: GET /api/books/search?query=spring
+     */
+    @GetMapping("/search/query")
+    public ResponseEntity<List<Book>> searchBooks(@RequestParam String query) {
+        try {
+            List<Book> results = bookService.searchBooks(query);
+            return ResponseEntity.ok(results);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    /**
+     * Search books by title AND author
+     * HTTP: GET /api/books/search/advanced?title=Spring&author=Walls
+     */
+    @GetMapping("/search/advanced")
+    public ResponseEntity<List<Book>> searchByTitleAndAuthor(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String author) {
+        try {
+            List<Book> results = bookService.searchByTitleAndAuthor(title, author);
+            return ResponseEntity.ok(results);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    /**
+     * Get available books with pagination
+     * HTTP: GET /api/books/available/paginated?page=0&size=10
+     */
+    @GetMapping("/available/paginated")
+    public ResponseEntity<PageResponse<Book>> getAvailableBooksWithPagination(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PageResponse<Book> response = bookService.getAvailableBooksWithPagination(page, size);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Get unavailable books with pagination
+     * HTTP: GET /api/books/unavailable/paginated?page=0&size=10
+     */
+    @GetMapping("/unavailable/paginated")
+    public ResponseEntity<PageResponse<Book>> getUnavailableBooksWithPagination(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PageResponse<Book> response = bookService.getUnavailableBooksWithPagination(page, size);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Search books with pagination
+     * HTTP: GET /api/books/search/paginated?query=java&page=0&size=10
+     */
+    @GetMapping("/search/paginated")
+    public ResponseEntity<PageResponse<Book>> searchBooksWithPagination(
+            @RequestParam String query,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PageResponse<Book> response = bookService.searchBooksWithPagination(query, page, size);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Get books sorted by title
+     * HTTP: GET /api/books/sorted/title?asc=true&page=0&size=10
+     */
+    @GetMapping("/sorted/title")
+    public ResponseEntity<PageResponse<Book>> getBooksSortedByTitle(
+            @RequestParam(defaultValue = "true") boolean asc,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PageResponse<Book> response = bookService.getBooksSortedByTitle(page, size, asc);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Get books sorted by author
+     * HTTP: GET /api/books/sorted/author?asc=true&page=0&size=10
+     */
+    @GetMapping("/sorted/author")
+    public ResponseEntity<PageResponse<Book>> getBooksSortedByAuthor(
+            @RequestParam(defaultValue = "true") boolean asc,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PageResponse<Book> response = bookService.getBooksSortedByAuthor(page, size, asc);
+        return ResponseEntity.ok(response);
     }
 }

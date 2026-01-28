@@ -2,6 +2,7 @@ package com.example.library.controller;
 
 import com.example.library.entity.Student;
 import com.example.library.service.StudentService;
+import com.example.library.dto.PageResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -160,5 +161,108 @@ public class StudentController {
     public ResponseEntity<Long> getTotalStudents() {
         long count = studentService.getTotalStudents();
         return new ResponseEntity<>(count, HttpStatus.OK);
+    }
+
+    // ===== PHASE 3: ADVANCED SEARCH & PAGINATION =====
+
+    /**
+     * Search students by name or email
+     * HTTP: GET /api/students/search/query?query=john
+     */
+    @GetMapping("/search/query")
+    public ResponseEntity<List<Student>> searchStudents(@RequestParam String query) {
+        try {
+            List<Student> results = studentService.searchStudents(query);
+            return ResponseEntity.ok(results);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    /**
+     * Search students by roll number pattern
+     * HTTP: GET /api/students/search/rollpattern?pattern=CS
+     */
+    @GetMapping("/search/rollpattern")
+    public ResponseEntity<List<Student>> searchByRollPattern(@RequestParam String pattern) {
+        try {
+            List<Student> results = studentService.searchByRollNumberPattern(pattern);
+            return ResponseEntity.ok(results);
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+    /**
+     * Get active students with pagination
+     * HTTP: GET /api/students/active/paginated?page=0&size=10
+     */
+    @GetMapping("/active/paginated")
+    public ResponseEntity<PageResponse<Student>> getActiveStudentsWithPagination(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PageResponse<Student> response = studentService.getActiveStudentsWithPagination(page, size);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Get inactive students with pagination
+     * HTTP: GET /api/students/inactive/paginated?page=0&size=10
+     */
+    @GetMapping("/inactive/paginated")
+    public ResponseEntity<PageResponse<Student>> getInactiveStudentsWithPagination(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PageResponse<Student> response = studentService.getInactiveStudentsWithPagination(page, size);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Search students with pagination
+     * HTTP: GET /api/students/search/paginated?query=alex&page=0&size=10
+     */
+    @GetMapping("/search/paginated")
+    public ResponseEntity<PageResponse<Student>> searchStudentsWithPagination(
+            @RequestParam String query,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PageResponse<Student> response = studentService.searchStudentsWithPagination(query, page, size);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Get students sorted by name
+     * HTTP: GET /api/students/sorted/name?asc=true&page=0&size=10
+     */
+    @GetMapping("/sorted/name")
+    public ResponseEntity<PageResponse<Student>> getStudentsSortedByName(
+            @RequestParam(defaultValue = "true") boolean asc,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PageResponse<Student> response = studentService.getStudentsSortedByName(page, size, asc);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Get students sorted by roll number
+     * HTTP: GET /api/students/sorted/rollnumber?asc=true&page=0&size=10
+     */
+    @GetMapping("/sorted/rollnumber")
+    public ResponseEntity<PageResponse<Student>> getStudentsSortedByRollNumber(
+            @RequestParam(defaultValue = "true") boolean asc,
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+        PageResponse<Student> response = studentService.getStudentsSortedByRollNumber(page, size, asc);
+        return ResponseEntity.ok(response);
+    }
+
+    /**
+     * Count active students
+     * HTTP: GET /api/students/active/count
+     */
+    @GetMapping("/active/count")
+    public ResponseEntity<Long> countActiveStudents() {
+        long count = studentService.countActiveStudents();
+        return ResponseEntity.ok(count);
     }
 }

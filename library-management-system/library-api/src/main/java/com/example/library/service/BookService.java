@@ -2,6 +2,7 @@ package com.example.library.service;
 
 import com.example.library.entity.Book;
 import com.example.library.repository.BookRepository;
+import com.example.library.dto.PageResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -165,5 +166,79 @@ public class BookService {
      */
     public long getTotalBooks() {
         return bookRepository.count();
+    }
+
+    // ===== PHASE 3: ADVANCED SEARCH & PAGINATION =====
+
+    /**
+     * Advanced search: Find books by title or author
+     */
+    public List<Book> searchBooks(String query) {
+        if (query == null || query.trim().isEmpty()) {
+            return getAllBooks();
+        }
+        return bookRepository.searchByTitleOrAuthor(query.trim());
+    }
+
+    /**
+     * Advanced search: Find books by both title and author
+     */
+    public List<Book> searchByTitleAndAuthor(String title, String author) {
+        if ((title == null || title.trim().isEmpty()) && (author == null || author.trim().isEmpty())) {
+            return getAllBooks();
+        }
+        String titleQuery = title != null ? title.trim() : "";
+        String authorQuery = author != null ? author.trim() : "";
+        return bookRepository.findByTitleAndAuthor(titleQuery, authorQuery);
+    }
+
+    /**
+     * Get available books with pagination
+     */
+    public PageResponse<Book> getAvailableBooksWithPagination(int pageNumber, int pageSize) {
+        List<Book> available = bookRepository.findByAvailableTrue();
+        return PaginationService.paginate(available, pageNumber, pageSize);
+    }
+
+    /**
+     * Get unavailable books with pagination
+     */
+    public PageResponse<Book> getUnavailableBooksWithPagination(int pageNumber, int pageSize) {
+        List<Book> unavailable = bookRepository.findByAvailableFalse();
+        return PaginationService.paginate(unavailable, pageNumber, pageSize);
+    }
+
+    /**
+     * Search books with pagination
+     */
+    public PageResponse<Book> searchBooksWithPagination(String query, int pageNumber, int pageSize) {
+        List<Book> results = searchBooks(query);
+        return PaginationService.paginate(results, pageNumber, pageSize);
+    }
+
+    /**
+     * Get books sorted by title with pagination
+     */
+    public PageResponse<Book> getBooksSortedByTitle(int pageNumber, int pageSize, boolean ascending) {
+        List<Book> allBooks = getAllBooks();
+        if (ascending) {
+            allBooks.sort((a, b) -> a.getTitle().compareToIgnoreCase(b.getTitle()));
+        } else {
+            allBooks.sort((a, b) -> b.getTitle().compareToIgnoreCase(a.getTitle()));
+        }
+        return PaginationService.paginate(allBooks, pageNumber, pageSize);
+    }
+
+    /**
+     * Get books sorted by author with pagination
+     */
+    public PageResponse<Book> getBooksSortedByAuthor(int pageNumber, int pageSize, boolean ascending) {
+        List<Book> allBooks = getAllBooks();
+        if (ascending) {
+            allBooks.sort((a, b) -> a.getAuthor().compareToIgnoreCase(b.getAuthor()));
+        } else {
+            allBooks.sort((a, b) -> b.getAuthor().compareToIgnoreCase(a.getAuthor()));
+        }
+        return PaginationService.paginate(allBooks, pageNumber, pageSize);
     }
 }

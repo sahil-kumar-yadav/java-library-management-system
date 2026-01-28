@@ -6,6 +6,7 @@ import com.example.library.entity.Book;
 import com.example.library.repository.LoanRepository;
 import com.example.library.repository.StudentRepository;
 import com.example.library.repository.BookRepository;
+import com.example.library.dto.PageResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -110,5 +111,85 @@ public class LoanService {
 
     public Long getTotalLoans() {
         return loanRepository.count();
+    }
+
+    // ===== PHASE 3: ADVANCED QUERIES & PAGINATION =====
+
+    /**
+     * Get active loans sorted by due date
+     */
+    public List<Loan> getActiveLoansOrderedByDueDate() {
+        return loanRepository.findActiveLoansOrderedByDueDate();
+    }
+
+    /**
+     * Get loans overdue by specific date
+     */
+    public List<Loan> getOverdueLoansBeforeDate(LocalDateTime cutoffDate) {
+        return loanRepository.findOverdueLoansBeforeDate(cutoffDate);
+    }
+
+    /**
+     * Get student's loans sorted by loan date
+     */
+    public List<Loan> getStudentLoansSorted(Long studentId) {
+        studentRepository.findById(studentId)
+                .orElseThrow(() -> new IllegalArgumentException("Student not found"));
+        return loanRepository.findLoansByStudentSorted(studentId);
+    }
+
+    /**
+     * Count active loans for a student
+     */
+    public long countActiveLoansForStudent(Long studentId) {
+        studentRepository.findById(studentId)
+                .orElseThrow(() -> new IllegalArgumentException("Student not found"));
+        return loanRepository.countActiveLoansForStudent(studentId);
+    }
+
+    /**
+     * Get recently returned loans
+     */
+    public List<Loan> getRecentlyReturnedLoans() {
+        return loanRepository.findRecentlyReturnedLoans();
+    }
+
+    /**
+     * Get loans due within date range
+     */
+    public List<Loan> getLoansDueBetweenDates(LocalDateTime startDate, LocalDateTime endDate) {
+        return loanRepository.findLoansDueBetweenDates(startDate, endDate);
+    }
+
+    /**
+     * Get loans with pagination
+     */
+    public PageResponse<Loan> getLoansWithPagination(int pageNumber, int pageSize) {
+        List<Loan> allLoans = getAllLoans();
+        return PaginationService.paginate(allLoans, pageNumber, pageSize);
+    }
+
+    /**
+     * Get active loans with pagination
+     */
+    public PageResponse<Loan> getActiveLoansWithPagination(int pageNumber, int pageSize) {
+        List<Loan> activeLoans = getActiveLoans();
+        return PaginationService.paginate(activeLoans, pageNumber, pageSize);
+    }
+
+    /**
+     * Get overdue loans with pagination
+     */
+    public PageResponse<Loan> getOverdueLoansWithPagination(int pageNumber, int pageSize) {
+        List<Loan> overdueLoans = getOverdueLoans();
+        return PaginationService.paginate(overdueLoans, pageNumber, pageSize);
+    }
+
+    /**
+     * Get loans for student with pagination
+     */
+    public PageResponse<Loan> getStudentLoansWithPagination(Long studentId, int pageNumber, int pageSize) {
+        List<Loan> studentLoans = getLoansByStudent(studentId);
+        return PaginationService.paginate(studentLoans, pageNumber, pageSize);
     }
 }

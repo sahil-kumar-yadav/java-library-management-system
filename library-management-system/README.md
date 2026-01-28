@@ -4,279 +4,470 @@
 ### 🎯 Goal
 Build ONE expandable Spring Boot application to learn backend development from beginner to job-ready.
 
-**Current Status:** ✅ **PHASE 1 COMPLETE** - Core CRUD Operations
+**Current Status:** ✅ **PHASE 3 COMPLETE** - Advanced Queries & Pagination | 64+ REST Endpoints
 
 ---
 
-## 📋 PHASE 1: Core CRUD (COMPLETE)
+## 📊 Project Progress
 
-### What You'll Learn
-✅ Spring Boot fundamentals  
-✅ REST API design  
-✅ JPA/Hibernate basics  
-✅ Clean architecture (Controller → Service → Repository)  
-✅ CRUD operations  
-✅ H2 in-memory database  
-✅ Dependency injection  
+| Phase | Status | Features | Endpoints |
+|-------|--------|----------|-----------|
+| 1: Core CRUD | ✅ Complete | Books, Students, Basic Search | 20 |
+| 2: Relationships | ✅ Complete | Loans, Reservations, Dashboard UI | 20 |
+| 3: Advanced Queries | ✅ Complete | Pagination, Full-Text Search, Sorting | 24 |
+| 4: Authentication | ⏳ Planned | Login, JWT, Role-Based Access | 5-10 |
+| 5: Notifications | ⏳ Planned | Email Alerts, Fine Calculations | 8-12 |
+| 6: Deployment | ⏳ Planned | Docker, CI/CD, Cloud Deployment | - |
 
-### Project Structure
-```
-library-api/
-├── controller/       (HTTP endpoints)
-├── service/          (Business logic)
-├── repository/       (Database access)
-├── entity/           (Database models)
-└── resources/        (Configuration)
-```
-
-### Key Technologies
-- **Java 17**
-- **Spring Boot 3.2.1**
-- **Spring Data JPA** (Hibernate)
-- **H2 Database** (in-memory, embedded)
-- **Maven** (dependency management)
+**Total Endpoints:** 64+
 
 ---
 
-## 🚀 GETTING STARTED
+## ✨ Phase 3 Features (NEW!)
+
+### Advanced Search
+```bash
+# Search books by title or author
+curl "http://localhost:8000/api/books/search/query?query=spring"
+
+# Search students by name or email
+curl "http://localhost:8000/api/students/search/query?query=john"
+
+# Pattern matching on roll numbers
+curl "http://localhost:8000/api/students/search/rollpattern?pattern=CS"
+```
+
+### Pagination
+```bash
+# Paginated book search
+curl "http://localhost:8000/api/books/search/paginated?query=java&page=0&size=10"
+
+Response includes: content, pageNumber, pageSize, totalElements, totalPages, hasNext, hasPrevious
+```
+
+### Sorting
+```bash
+# Sort books by title (A-Z)
+curl "http://localhost:8000/api/books/sorted/title?asc=true&page=0&size=10"
+
+# Sort students by name (Z-A)
+curl "http://localhost:8000/api/students/sorted/name?asc=false&page=0&size=10"
+```
+
+### Advanced Loan Queries
+```bash
+# Get loans due between dates
+curl "http://localhost:8000/api/loans/due/between?startDate=2026-01-28T00:00:00&endDate=2026-02-28T23:59:59"
+
+# Get student's active loan count
+curl "http://localhost:8000/api/loans/student/1/count-active"
+
+# Get recently returned loans
+curl "http://localhost:8000/api/loans/recently-returned"
+```
+
+---
+
+## 🚀 QUICK START
 
 ### Prerequisites
 - Java 17+
 - Maven 3.8+
-- Postman (for API testing)
 
 ### Run the Application
 
 ```bash
-cd library-api
+cd /workspaces/codespaces-blank/library-management-system/library-api
+
+# Build
+mvn clean package -DskipTests
+
+# Run
 mvn spring-boot:run
 ```
 
-**Server will start on:** https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api
+**Server will start on:** http://localhost:8000 (API) and http://localhost:8000/index.html (Dashboard)
 
 ---
 
-## 📝 API ENDPOINTS (Phase 1)
+## � COMPREHENSIVE GUIDES
 
-### Books Management
+### Phase 1: Core CRUD
+- **Guide:** [PHASE_1_GUIDE.md](./PHASE_1_GUIDE.md) - Detailed tutorial
+- **Quick Start:** [PHASE_1_QUICK_START.md](./PHASE_1_QUICK_START.md) - Quick reference
+- **Topics:** REST APIs, CRUD operations, JPA basics, repositories
 
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| GET | `/books` | Get all books |
-| GET | `/books/{id}` | Get book by ID |
-| POST | `/books` | Create new book |
-| PUT | `/books/{id}` | Update book |
-| DELETE | `/books/{id}` | Delete book |
-| GET | `/books/search/title?q=` | Search by title |
-| GET | `/books/search/author?q=` | Search by author |
-| GET | `/books/available` | Get available books |
-| GET | `/books/borrowed` | Get borrowed books |
-| GET | `/books/count` | Get total count |
+### Phase 2: Database Relationships  
+- **Guide:** [PHASE_2_GUIDE.md](./PHASE_2_GUIDE.md) - Detailed tutorial
+- **Quick Start:** [PHASE_2_QUICK_START.md](./PHASE_2_QUICK_START.md) - Quick reference
+- **Topics:** Entity relationships, One-to-Many, cascading, interactive UI
 
-### Students Management
-
-| Method | Endpoint | Purpose |
-|--------|----------|---------|
-| GET | `/students` | Get all students |
-| GET | `/students/{id}` | Get student by ID |
-| POST | `/students` | Register new student |
-| PUT | `/students/{id}` | Update student |
-| DELETE | `/students/{id}` | Remove student |
-| GET | `/students/search/email?q=` | Find by email |
-| GET | `/students/search/rollnumber?q=` | Find by roll number |
-| GET | `/students/active` | Get active students |
-| GET | `/students/count` | Get total count |
+### Phase 3: Advanced Queries & Pagination (🆕 COMPLETE)
+- **Guide:** [PHASE_3_GUIDE.md](./PHASE_3_GUIDE.md) - Detailed tutorial
+- **Quick Start:** [PHASE_3_QUICK_START.md](./PHASE_3_QUICK_START.md) - Quick reference with test cases
+- **Completion:** [PHASE_3_COMPLETION.md](./PHASE_3_COMPLETION.md) - Detailed completion report
+- **Topics:** JPQL queries, custom repositories, pagination, sorting, filtering
 
 ---
 
-## 📖 DETAILED LEARNING GUIDE
+## 📝 API ENDPOINTS (All Phases)
 
-See [PHASE_1_GUIDE.md](./PHASE_1_GUIDE.md) for:
-- Comprehensive concept explanations
-- Why each annotation is used
-- Common beginner mistakes
-- Step-by-step testing with Postman
-- Best practices
+### Books (16 endpoints)
+**CRUD (10):** Create, Read, Update, Delete, Get All, Search by title/author/ISBN, Filter available/unavailable  
+**Phase 3 (6):** Full-text search, multi-field search, paginated results, sorted results
 
----
+### Students (17 endpoints)
+**CRUD (10):** Create, Read, Update, Delete, Get All, Search by name/email/roll, Filter active/inactive  
+**Phase 3 (7):** Full-text search, pattern matching, paginated results, sorted results, count active
 
-## 🧪 TESTING WITH POSTMAN
+### Loans (22 endpoints)
+**Basic (11):** Create, Read, Update, Delete, Get by student/book, Filter active/overdue/returned  
+**Phase 3 (11):** Sort by due date, date range queries, recently returned, paginated results, count per student
 
-### Quick Start
+### Reservations (9 endpoints)
+**CRUD (9):** Create, Read, Update, Delete, Get by student/book, Filter active/cancelled
 
-1. **Import Base URL:** `https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api`
-
-2. **Create a Book:**
-```json
-POST /books
-{
-  "title": "Clean Code",
-  "author": "Robert C. Martin",
-  "isbn": "978-0132350884",
-  "available": true
-}
-```
-
-3. **Get All Books:**
-```
-GET /books
-```
-
-4. **Search:**
-```
-GET /books/search/title?q=Clean
-```
-
-See [PHASE_1_GUIDE.md](./PHASE_1_GUIDE.md#-testing-with-postman) for complete test scenarios.
+**Total: 64+ Endpoints**
 
 ---
 
-## 🗄️ H2 DATABASE CONSOLE
+## 🏗️ ARCHITECTURE OVERVIEW
 
-Access the embedded H2 database GUI:
-
-**URL:** https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/h2-console
-
-**Credentials:**
-- JDBC URL: `jdbc:h2:mem:librarydb`
-- Username: `sa`
-- Password: (leave empty)
-
-View and query tables directly!
-
----
-
-## 🔑 KEY CONCEPTS (Phase 1)
-
-### Three-Layer Architecture
 ```
-┌─────────────────────────┐
-│   CONTROLLER Layer      │
-│ (HTTP Requests/Response)│
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│   SERVICE Layer         │
-│ (Business Logic)        │
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│  REPOSITORY Layer       │
-│ (Database Access)       │
-└────────────┬────────────┘
-             ↓
-┌─────────────────────────┐
-│    H2 DATABASE          │
-└─────────────────────────┘
-```
-
-### REST Conventions
-- **Resource:** `/api/books` (plural nouns)
-- **Operations:** GET, POST, PUT, DELETE
-- **Status Codes:** 200 (OK), 201 (Created), 204 (No Content), 404 (Not Found)
-- **Format:** JSON
-
-### JPA Entity Annotations
-```java
-@Entity              // Maps to database table
-@Table(name = "books")
-@Id                  // Primary key
-@GeneratedValue      // Auto-increment
-@Column              // Column constraints
-@PrePersist          // Before save
+REST Client (curl, browser, Postman)
+        ↓
+┌───────────────────────┐
+│ Spring Boot Server    │
+│ (Port 8000)          │
+├───────────────────────┤
+│ Controllers (REST)    │
+│ - BookController      │
+│ - StudentController   │
+│ - LoanController      │
+│ - ReservationController
+├───────────────────────┤
+│ Services (Business)   │
+│ - BookService         │
+│ - StudentService      │
+│ - LoanService         │
+│ - ReservationService  │
+│ - PaginationService ✨ (Phase 3)
+├───────────────────────┤
+│ Repositories (Data)   │
+│ - BookRepository      │
+│ - StudentRepository   │
+│ - LoanRepository      │
+│ - ReservationRepository
+│ With 17 Custom @Query Methods ✨
+├───────────────────────┤
+│ JPQL Queries          │
+│ (Database Search)     │
+├───────────────────────┤
+│ H2 Database           │
+│ (4 Tables)            │
+└───────────────────────┘
 ```
 
 ---
 
-## 📚 WHAT'S NEXT? (Phase 2+)
+## 🗄️ DATABASE SCHEMA
 
-### Phase 2: Database Relationships
-- One-to-Many (Student borrows many Books)
-- Many-to-One (Book borrowed by Student)
-- Pagination & sorting
-- JPQL queries
+### Books Table
+```
+├── id (Long) - Primary Key
+├── title (String) - Book title
+├── author (String) - Author name
+├── isbn (String) - ISBN code
+├── available (Boolean) - In stock?
+├── loans (One-to-Many) → Loan entities
+└── reservations (One-to-Many) → Reservation entities
+```
 
-### Phase 3: Validation & Exception Handling
-- Input validation
-- Custom exceptions
-- Global error handling
-- HTTP status codes
+### Students Table
+```
+├── id (Long) - Primary Key
+├── name (String) - Student name
+├── email (String) - Email address
+├── rollNumber (String) - Roll number
+├── active (Boolean) - Active status
+├── loans (One-to-Many) → Loan entities
+└── reservations (One-to-Many) → Reservation entities
+```
 
-### Phase 4: Security
-- User authentication
-- Password hashing
-- JWT tokens
-- Role-based access
+### Loans Table
+```
+├── id (Long) - Primary Key
+├── student (Many-to-One) → Student
+├── book (Many-to-One) → Book
+├── loanDate (LocalDateTime) - Borrow date
+├── dueDate (LocalDateTime) - Due date
+├── returnDate (LocalDateTime) - Actual return date
+└── isReturned (Boolean) - Returned status
+```
 
-### Phase 5: Advanced APIs
-- DTO pattern
-- API response structure
-- Complex filtering
-
-### Phase 6: Production Ready
-- MySQL integration
-- Logging
-- Swagger/OpenAPI
-- Docker
+### Reservations Table
+```
+├── id (Long) - Primary Key
+├── student (Many-to-One) → Student
+├── book (Many-to-One) → Book
+├── reservationDate (LocalDateTime) - Reservation date
+├── queuePosition (Integer) - Position in queue
+└── cancelled (Boolean) - Cancellation status
+```
 
 ---
 
-## ⚡ QUICK REFERENCE
+## 🧪 TESTING PHASE 3 FEATURES
 
-### Common Maven Commands
+### Add Sample Data
+```bash
+# Add books
+curl -X POST http://localhost:8000/api/books \
+  -H "Content-Type: application/json" \
+  -d '{"title":"Spring in Action","author":"Craig Walls","isbn":"123","available":true}'
+
+# Add students
+curl -X POST http://localhost:8000/api/students \
+  -H "Content-Type: application/json" \
+  -d '{"name":"Alice Johnson","email":"alice@uni.edu","rollNumber":"CS001","active":true}'
+```
+
+### Test Search
+```bash
+# Full-text book search
+curl "http://localhost:8000/api/books/search/query?query=spring"
+
+# Student pattern matching
+curl "http://localhost:8000/api/students/search/rollpattern?pattern=CS"
+```
+
+### Test Pagination
+```bash
+# Paginated search with metadata
+curl "http://localhost:8000/api/books/search/paginated?query=java&page=0&size=10"
+
+# Response includes: content, pageNumber, pageSize, totalElements, totalPages, hasNext, hasPrevious
+```
+
+### Test Sorting
+```bash
+# Sort ascending
+curl "http://localhost:8000/api/books/sorted/title?asc=true&page=0&size=10"
+
+# Sort descending
+curl "http://localhost:8000/api/books/sorted/title?asc=false&page=0&size=10"
+```
+
+### Test Advanced Loan Queries
+```bash
+# Date range queries
+curl "http://localhost:8000/api/loans/due/between?startDate=2026-01-28T00:00:00&endDate=2026-02-28T23:59:59"
+
+# Student statistics
+curl "http://localhost:8000/api/loans/student/1/count-active"
+
+# Recent activity
+curl "http://localhost:8000/api/loans/recently-returned"
+```
+
+See [PHASE_3_QUICK_START.md](./PHASE_3_QUICK_START.md) for comprehensive test cases with expected responses.
+
+---
+
+## 🔧 KEY TECHNOLOGIES
+
+```
+Java 17+
+├── Spring Boot 3.2.1
+│   ├── Spring Web (REST APIs)
+│   ├── Spring Data JPA (Database ORM)
+│   └── Spring Context (Dependency Injection)
+├── Hibernate 6.4.1 (ORM Framework)
+├── H2 Database 2.2.224 (In-Memory Database)
+├── Tomcat 10.1.17 (Embedded Web Server)
+└── Maven 3.8+ (Build & Dependency Tool)
+```
+
+### Phase 3 Additions
+- **JPQL** - Java Persistence Query Language
+- **Custom @Query** - Annotations for complex queries
+- **PageResponse<T>** - Generic pagination DTO
+- **PaginationService** - Pagination utility helper
+- **Generic Programming** - Reusable components with <T>
+
+---
+
+## 📈 PROJECT STATISTICS
+
+| Metric | Phase 1 | Phase 2 | Phase 3 | Total |
+|--------|---------|---------|---------|-------|
+| Entities | 2 | 4 | 4 | 4 |
+| Endpoints | 20 | 20 | 24 | 64+ |
+| Repositories | 2 | 4 | 4 | 4 |
+| Services | 2 | 4 | 5 | 5 |
+| Controllers | 2 | 4 | 4 | 4 |
+| Custom Queries | 0 | 0 | 17 | 17 |
+| DTOs | 0 | 0 | 1 | 1 |
+| Source Files | 8 | 16 | 30+ | 30+ |
+
+**Build Status:** ✅ SUCCESS | **Compilation Errors:** 0 | **Coverage:** Manual + Curl tests
+
+---
+
+## 🎯 LEARNING OUTCOMES
+
+### Phase 1: Core Skills
+- REST API design and HTTP methods
+- JPA/Hibernate basics
+- Controller-Service-Repository pattern
+- CRUD operations
+- Basic search functionality
+
+### Phase 2: Relationships & UI
+- Entity relationships (@OneToMany, @ManyToOne)
+- Cascading operations
+- Complex object modeling
+- Frontend integration
+- Interactive dashboard
+
+### Phase 3: Advanced Database Features
+- JPQL custom queries
+- Full-text search implementation
+- Pagination design pattern
+- Advanced filtering and sorting
+- Aggregation queries (COUNT)
+- Date range filtering
+- Generic programming patterns
+
+---
+
+## 🚀 NEXT PHASES (Coming Soon)
+
+### Phase 4: Authentication & Security
+- User login/logout with JWT tokens
+- Password encryption (bcrypt)
+- Role-based access control (RBAC)
+- Protected endpoints
+- User registration
+
+### Phase 5: Notifications & Penalties
+- Email notifications for overdue books
+- Fine calculation system
+- Reminder emails
+- Notification API
+
+### Phase 6: Deployment & DevOps
+- Docker containerization
+- CI/CD pipeline (GitHub Actions)
+- Cloud deployment (AWS/GCP/Azure)
+- Production logging
+- Performance monitoring
+
+---
+
+## 🎓 PROJECT STRUCTURE
+
+```
+library-management-system/
+├── library-api/
+│   ├── src/main/java/com/library/
+│   │   ├── entity/               (4 JPA Entities)
+│   │   │   ├── Book.java
+│   │   │   ├── Student.java
+│   │   │   ├── Loan.java
+│   │   │   └── Reservation.java
+│   │   ├── repository/           (4 Repositories)
+│   │   │   ├── BookRepository.java
+│   │   │   ├── StudentRepository.java
+│   │   │   ├── LoanRepository.java
+│   │   │   └── ReservationRepository.java
+│   │   ├── service/              (5 Services)
+│   │   │   ├── BookService.java
+│   │   │   ├── StudentService.java
+│   │   │   ├── LoanService.java
+│   │   │   ├── ReservationService.java
+│   │   │   └── PaginationService.java ✨ (Phase 3)
+│   │   ├── controller/           (4 Controllers)
+│   │   │   ├── BookController.java
+│   │   │   ├── StudentController.java
+│   │   │   ├── LoanController.java
+│   │   │   └── ReservationController.java
+│   │   ├── dto/                  (DTOs)
+│   │   │   └── PageResponse.java ✨ (Phase 3)
+│   │   └── LibraryApiApplication.java
+│   ├── src/main/resources/
+│   │   ├── application.properties
+│   │   └── (database config)
+│   ├── src/main/static/
+│   │   └── index.html            (Interactive Dashboard UI)
+│   └── pom.xml
+│
+├── PHASE_1_GUIDE.md
+├── PHASE_1_QUICK_START.md
+├── PHASE_2_GUIDE.md
+├── PHASE_2_QUICK_START.md
+├── PHASE_3_GUIDE.md
+├── PHASE_3_QUICK_START.md
+├── PHASE_3_COMPLETION.md
+└── README.md (this file)
+```
+
+---
+
+## ⚡ QUICK COMMANDS
 
 ```bash
-# Build project
-mvn clean install
-
-# Run application
+# Build and run
+cd /workspaces/codespaces-blank/library-management-system/library-api
+mvn clean package -DskipTests
 mvn spring-boot:run
 
-# Run tests
-mvn test
+# Access application
+# API: http://localhost:8000/api
+# Dashboard: http://localhost:8000
+# H2 Console: http://localhost:8000/h2-console
 
-# Create package
-mvn package
-
-# Clean build files
-mvn clean
+# Test endpoints
+curl http://localhost:8000/api/books
+curl "http://localhost:8000/api/books/search/query?query=java"
 ```
-
-### Spring Boot Annotations
-
-| Annotation | Purpose |
-|-----------|---------|
-| `@SpringBootApplication` | Entry point |
-| `@RestController` | HTTP endpoint |
-| `@Service` | Business logic |
-| `@Repository` | Data access |
-| `@Entity` | Database model |
-| `@Autowired` | Dependency injection |
-| `@RequestMapping` | Route mapping |
-| `@GetMapping`, `@PostMapping` | HTTP methods |
 
 ---
 
-## 📞 COMMON ISSUES & FIXES
+## 📞 SUPPORT & DOCUMENTATION
 
-### Issue: "Cannot find symbol" for getters/setters
-**Fix:** Ensure Lombok is installed and JPA annotations are on fields
-
-### Issue: "Table not found" error
-**Fix:** H2 database starts empty. Try `spring.jpa.hibernate.ddl-auto=create` in `application.properties`
-
-### Issue: Port 8080 already in use
-**Fix:** Change port in `application.properties`:
-```properties
-server.port=8081
-```
-
-### Issue: "No qualifying bean" error
-**Fix:** Ensure class has `@Service`, `@Repository`, or `@RestController` annotation
+| Resource | Link |
+|----------|------|
+| Phase 1 Guide | [PHASE_1_GUIDE.md](./PHASE_1_GUIDE.md) |
+| Phase 1 Quick Start | [PHASE_1_QUICK_START.md](./PHASE_1_QUICK_START.md) |
+| Phase 2 Guide | [PHASE_2_GUIDE.md](./PHASE_2_GUIDE.md) |
+| Phase 2 Quick Start | [PHASE_2_QUICK_START.md](./PHASE_2_QUICK_START.md) |
+| Phase 3 Guide | [PHASE_3_GUIDE.md](./PHASE_3_GUIDE.md) |
+| Phase 3 Quick Start | [PHASE_3_QUICK_START.md](./PHASE_3_QUICK_START.md) |
+| Phase 3 Completion | [PHASE_3_COMPLETION.md](./PHASE_3_COMPLETION.md) |
 
 ---
 
-## 🎓 LEARNING OBJECTIVES
+## 🎉 ACHIEVEMENTS
+
+✅ Complete REST API for library management  
+✅ Full entity relationships with cascading  
+✅ Advanced search and filtering  
+✅ Pagination with metadata  
+✅ Sorting by multiple criteria  
+✅ Interactive dashboard UI  
+✅ 64+ production-ready endpoints  
+✅ Comprehensive documentation  
+✅ Zero compilation errors  
+✅ Ready for Phase 4 development  
+
+---
+
+**Last Updated:** Phase 3 Complete  
+**Build Status:** ✅ SUCCESS  
+**Next Phase:** Phase 4 - Authentication & Security
+
+Ready to start? Run `mvn spring-boot:run` and visit http://localhost:8000!
 
 By the end of Phase 1, you should understand:
 

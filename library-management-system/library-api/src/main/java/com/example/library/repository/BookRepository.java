@@ -2,6 +2,8 @@ package com.example.library.repository;
 
 import com.example.library.entity.Book;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -68,4 +70,28 @@ public interface BookRepository extends JpaRepository<Book, Long> {
      * Find a book by ISBN
      */
     Optional<Book> findByIsbn(String isbn);
+
+    /**
+     * Advanced search: Find books by title or author (case-insensitive)
+     */
+    @Query("SELECT b FROM Book b WHERE LOWER(b.title) LIKE LOWER(CONCAT('%', :query, '%')) OR LOWER(b.author) LIKE LOWER(CONCAT('%', :query, '%'))")
+    List<Book> searchByTitleOrAuthor(@Param("query") String query);
+
+    /**
+     * Advanced search: Find books by title and author combination
+     */
+    @Query("SELECT b FROM Book b WHERE LOWER(b.title) LIKE LOWER(CONCAT('%', :title, '%')) AND LOWER(b.author) LIKE LOWER(CONCAT('%', :author, '%'))")
+    List<Book> findByTitleAndAuthor(@Param("title") String title, @Param("author") String author);
+
+    /**
+     * Advanced search: Find books with pagination support (manual implementation)
+     */
+    @Query("SELECT b FROM Book b WHERE LOWER(b.title) LIKE LOWER(CONCAT('%', :title, '%')) ORDER BY b.title ASC")
+    List<Book> findByTitlePaginated(@Param("title") String title);
+
+    /**
+     * Find books with specific availability status sorted by title
+     */
+    @Query("SELECT b FROM Book b WHERE b.available = :available ORDER BY b.title ASC")
+    List<Book> findByAvailabilityStatus(@Param("available") Boolean available);
 }

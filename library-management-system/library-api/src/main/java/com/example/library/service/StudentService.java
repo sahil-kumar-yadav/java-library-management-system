@@ -2,6 +2,7 @@ package com.example.library.service;
 
 import com.example.library.entity.Student;
 import com.example.library.repository.StudentRepository;
+import com.example.library.dto.PageResponse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -133,5 +134,84 @@ public class StudentService {
      */
     public long getTotalStudents() {
         return studentRepository.count();
+    }
+
+    // ===== PHASE 3: ADVANCED SEARCH & PAGINATION =====
+
+    /**
+     * Advanced search: Find students by name or email
+     */
+    public List<Student> searchStudents(String query) {
+        if (query == null || query.trim().isEmpty()) {
+            return getAllStudents();
+        }
+        return studentRepository.searchByNameOrEmail(query.trim());
+    }
+
+    /**
+     * Advanced search: Find students by roll number pattern
+     */
+    public List<Student> searchByRollNumberPattern(String pattern) {
+        if (pattern == null || pattern.trim().isEmpty()) {
+            return getAllStudents();
+        }
+        return studentRepository.findByRollNumberPattern(pattern.trim());
+    }
+
+    /**
+     * Get active students with pagination
+     */
+    public PageResponse<Student> getActiveStudentsWithPagination(int pageNumber, int pageSize) {
+        List<Student> active = studentRepository.findByActiveTrue();
+        return PaginationService.paginate(active, pageNumber, pageSize);
+    }
+
+    /**
+     * Get inactive students with pagination
+     */
+    public PageResponse<Student> getInactiveStudentsWithPagination(int pageNumber, int pageSize) {
+        List<Student> inactive = studentRepository.findByActiveFalse();
+        return PaginationService.paginate(inactive, pageNumber, pageSize);
+    }
+
+    /**
+     * Search students with pagination
+     */
+    public PageResponse<Student> searchStudentsWithPagination(String query, int pageNumber, int pageSize) {
+        List<Student> results = searchStudents(query);
+        return PaginationService.paginate(results, pageNumber, pageSize);
+    }
+
+    /**
+     * Get students sorted by name with pagination
+     */
+    public PageResponse<Student> getStudentsSortedByName(int pageNumber, int pageSize, boolean ascending) {
+        List<Student> allStudents = getAllStudents();
+        if (ascending) {
+            allStudents.sort((a, b) -> a.getName().compareToIgnoreCase(b.getName()));
+        } else {
+            allStudents.sort((a, b) -> b.getName().compareToIgnoreCase(a.getName()));
+        }
+        return PaginationService.paginate(allStudents, pageNumber, pageSize);
+    }
+
+    /**
+     * Get students sorted by roll number with pagination
+     */
+    public PageResponse<Student> getStudentsSortedByRollNumber(int pageNumber, int pageSize, boolean ascending) {
+        List<Student> allStudents = getAllStudents();
+        if (ascending) {
+            allStudents.sort((a, b) -> a.getRollNumber().compareToIgnoreCase(b.getRollNumber()));
+        } else {
+            allStudents.sort((a, b) -> b.getRollNumber().compareToIgnoreCase(a.getRollNumber()));
+        }
+        return PaginationService.paginate(allStudents, pageNumber, pageSize);
+    }
+
+    /**
+     * Count active students
+     */
+    public long countActiveStudents() {
+        return studentRepository.countActiveStudents();
     }
 }
