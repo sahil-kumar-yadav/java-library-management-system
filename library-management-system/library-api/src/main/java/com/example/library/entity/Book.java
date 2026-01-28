@@ -1,6 +1,7 @@
 package com.example.library.entity;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 /**
  * BOOK ENTITY - Represents a book in the library
@@ -49,6 +50,20 @@ public class Book {
      */
     @Column(name = "created_at", nullable = false, updatable = false)
     private Long createdAt;
+
+    /**
+     * One-to-Many: One book can have many loans
+     * mappedBy = "book": Student defines the relationship
+     * cascade = CascadeType.ALL: Delete loans when book is deleted
+     */
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Loan> loans;
+
+    /**
+     * One-to-Many: One book can have many reservations
+     */
+    @OneToMany(mappedBy = "book", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Reservation> reservations;
 
     /**
      * Automatically set the creation timestamp before saving
@@ -105,5 +120,21 @@ public class Book {
 
     public void setCreatedAt(Long createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public List<Loan> getLoans() {
+        return loans;
+    }
+
+    public void setLoans(List<Loan> loans) {
+        this.loans = loans;
+    }
+
+    public List<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(List<Reservation> reservations) {
+        this.reservations = reservations;
     }
 }
