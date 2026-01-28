@@ -15,7 +15,7 @@ Started LibraryApplication in X.XXX seconds (JVM running for X.XXX)
 
 ### 2. Verify Server is Running
 ```bash
-curl http://localhost:8080/api/books
+curl https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books
 ```
 
 Should return: `[]` (empty list)
@@ -538,7 +538,7 @@ Use any of:
 ## 📊 H2 DATABASE CONSOLE
 
 ### Access Database UI
-1. Open: http://localhost:8080/h2-console
+1. Open: https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/h2-console
 2. JDBC URL: `jdbc:h2:mem:librarydb`
 3. Username: `sa`
 4. Password: (leave empty)

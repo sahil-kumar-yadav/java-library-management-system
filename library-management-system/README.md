@@ -52,7 +52,7 @@ cd library-api
 mvn spring-boot:run
 ```
 
-**Server will start on:** http://localhost:8080/api
+**Server will start on:** https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api
 
 ---
 
@@ -104,7 +104,7 @@ See [PHASE_1_GUIDE.md](./PHASE_1_GUIDE.md) for:
 
 ### Quick Start
 
-1. **Import Base URL:** `http://localhost:8080/api`
+1. **Import Base URL:** `https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api`
 
 2. **Create a Book:**
 ```json
@@ -135,7 +135,7 @@ See [PHASE_1_GUIDE.md](./PHASE_1_GUIDE.md#-testing-with-postman) for complete te
 
 Access the embedded H2 database GUI:
 
-**URL:** http://localhost:8080/h2-console
+**URL:** https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/h2-console
 
 **Credentials:**
 - JDBC URL: `jdbc:h2:mem:librarydb`

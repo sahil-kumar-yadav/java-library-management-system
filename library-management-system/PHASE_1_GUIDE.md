@@ -402,13 +402,13 @@ public ResponseEntity<Book> getBook(@PathVariable Long id) {
 
 1. Download: https://www.postman.com/downloads/
 2. Create a new collection: "Library API"
-3. Set base URL: http://localhost:8080/api
+3. Set base URL: https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api
 
 ### Test Cases
 
 #### 1. CREATE BOOK
 ```
-POST http://localhost:8080/api/books
+POST https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books
 Content-Type: application/json
 
 {
@@ -431,7 +431,7 @@ Expected Response: 201 CREATED
 
 #### 2. GET ALL BOOKS
 ```
-GET http://localhost:8080/api/books
+GET https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books
 Content-Type: application/json
 
 Expected Response: 200 OK
@@ -446,7 +446,7 @@ Expected Response: 200 OK
 
 #### 3. GET BOOK BY ID
 ```
-GET http://localhost:8080/api/books/1
+GET https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books/1
 
 Expected Response: 200 OK (or 404 if not found)
 {
@@ -458,7 +458,7 @@ Expected Response: 200 OK (or 404 if not found)
 
 #### 4. UPDATE BOOK
 ```
-PUT http://localhost:8080/api/books/1
+PUT https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books/1
 Content-Type: application/json
 
 {
@@ -477,14 +477,14 @@ Expected Response: 200 OK
 
 #### 5. DELETE BOOK
 ```
-DELETE http://localhost:8080/api/books/1
+DELETE https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books/1
 
 Expected Response: 204 NO CONTENT (empty body)
 ```
 
 #### 6. SEARCH BY TITLE
 ```
-GET http://localhost:8080/api/books/search/title?q=Clean
+GET https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books/search/title?q=Clean
 
 Expected Response: 200 OK
 [
@@ -498,7 +498,7 @@ Expected Response: 200 OK
 
 #### 7. GET AVAILABLE BOOKS
 ```
-GET http://localhost:8080/api/books/available
+GET https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books/available
 
 Expected Response: 200 OK
 [...]
@@ -506,7 +506,7 @@ Expected Response: 200 OK
 
 #### 8. CREATE STUDENT
 ```
-POST http://localhost:8080/api/students
+POST https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/students
 Content-Type: application/json
 
 {
@@ -529,7 +529,7 @@ Expected Response: 201 CREATED
 
 #### 9. H2 DATABASE CONSOLE
 ```
-URL: http://localhost:8080/h2-console
+URL: https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/h2-console
 
 JDBC URL: jdbc:h2:mem:librarydb
 User: sa

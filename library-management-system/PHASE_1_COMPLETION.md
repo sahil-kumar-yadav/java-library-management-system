@@ -139,7 +139,7 @@ mvn spring-boot:run
 
 **Create Book:**
 ```bash
-curl -X POST http://localhost:8080/api/books \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Clean Code",
@@ -151,17 +151,17 @@ curl -X POST http://localhost:8080/api/books \
 
 **Get All Books:**
 ```bash
-curl http://localhost:8080/api/books
+curl https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books
 ```
 
 **Get Book by ID:**
 ```bash
-curl http://localhost:8080/api/books/1
+curl https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books/1
 ```
 
 **Update Book:**
 ```bash
-curl -X PUT http://localhost:8080/api/books/1 \
+curl -X PUT https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books/1 \
   -H "Content-Type: application/json" \
   -d '{
     "available": false
@@ -170,7 +170,7 @@ curl -X PUT http://localhost:8080/api/books/1 \
 
 **Delete Book:**
 ```bash
-curl -X DELETE http://localhost:8080/api/books/1
+curl -X DELETE https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books/1
 ```
 
 ---

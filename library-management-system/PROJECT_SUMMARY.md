@@ -186,10 +186,10 @@ mvn spring-boot:run
 ### Test the API
 ```bash
 # Get all books
-curl http://localhost:8080/api/books
+curl https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books
 
 # Create a book
-curl -X POST http://localhost:8080/api/books \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Clean Code",
@@ -201,7 +201,7 @@ curl -X POST http://localhost:8080/api/books \
 
 ### View Database
 ```
-URL: http://localhost:8080/h2-console
+URL: https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/h2-console
 JDBC URL: jdbc:h2:mem:librarydb
 Username: sa
 Password: (leave empty)
@@ -438,4 +438,4 @@ You've built a solid foundation in:
 cd library-api && mvn spring-boot:run
 ```
 
-Then open: `http://localhost:8080/api/books` in your browser or Postman!
+Then open: `https://studious-lamp-6654w7vjgxv3gp-8080.app.github.dev/api/books` in your browser or Postman!
