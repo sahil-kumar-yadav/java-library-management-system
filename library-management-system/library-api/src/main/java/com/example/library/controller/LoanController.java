@@ -20,6 +20,7 @@ public class LoanController {
     }
 
     @PostMapping
+    @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('LIBRARIAN','ADMIN')")
     public ResponseEntity<Loan> createLoan(
             @RequestParam Long studentId,
             @RequestParam Long bookId,
@@ -74,6 +75,7 @@ public class LoanController {
     }
 
     @PutMapping("/{id}/return")
+    @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('LIBRARIAN','ADMIN')")
     public ResponseEntity<Loan> returnBook(@PathVariable Long id) {
         try {
             Loan loan = loanService.returnBook(id);
@@ -84,6 +86,7 @@ public class LoanController {
     }
 
     @DeleteMapping("/{id}")
+    @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('LIBRARIAN','ADMIN')")
     public ResponseEntity<Void> deleteLoan(@PathVariable Long id) {
         loanService.deleteLoan(id);
         return ResponseEntity.noContent().build();

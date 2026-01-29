@@ -18,6 +18,7 @@ public class ReservationController {
     }
 
     @PostMapping
+    @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('LIBRARIAN','ADMIN')")
     public ResponseEntity<Reservation> createReservation(
             @RequestParam Long studentId,
             @RequestParam Long bookId) {
@@ -62,6 +63,7 @@ public class ReservationController {
     }
 
     @PutMapping("/{id}/cancel")
+    @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('LIBRARIAN','ADMIN')")
     public ResponseEntity<Reservation> cancelReservation(@PathVariable Long id) {
         try {
             Reservation reservation = reservationService.cancelReservation(id);
@@ -72,6 +74,7 @@ public class ReservationController {
     }
 
     @DeleteMapping("/{id}")
+    @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('LIBRARIAN','ADMIN')")
     public ResponseEntity<Void> deleteReservation(@PathVariable Long id) {
         reservationService.deleteReservation(id);
         return ResponseEntity.noContent().build();

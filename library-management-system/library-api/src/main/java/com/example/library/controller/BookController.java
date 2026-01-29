@@ -58,6 +58,7 @@ public class BookController {
      * ResponseEntity: Allows setting HTTP status code
      */
     @PostMapping
+    @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('LIBRARIAN','ADMIN')")
     public ResponseEntity<Book> createBook(@RequestBody Book book) {
         try {
             Book createdBook = bookService.createBook(book);
@@ -114,6 +115,7 @@ public class BookController {
      * - Idempotent: Same request = same result
      */
     @PutMapping("/{id}")
+    @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('LIBRARIAN','ADMIN')")
     public ResponseEntity<Book> updateBook(@PathVariable Long id, @RequestBody Book bookDetails) {
         try {
             Optional<Book> updated = bookService.updateBook(id, bookDetails);
@@ -138,6 +140,7 @@ public class BookController {
      * - 200 OK: Success with response body
      */
     @DeleteMapping("/{id}")
+    @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('LIBRARIAN','ADMIN')")
     public ResponseEntity<Void> deleteBook(@PathVariable Long id) {
         if (bookService.deleteBook(id)) {
             // 204 No Content: Successfully deleted

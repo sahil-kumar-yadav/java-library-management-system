@@ -35,6 +35,7 @@ public class StudentController {
      * Response: 201 CREATED
      */
     @PostMapping
+    @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('LIBRARIAN','ADMIN')")
     public ResponseEntity<Student> createStudent(@RequestBody Student student) {
         try {
             Student createdStudent = studentService.createStudent(student);
@@ -76,6 +77,7 @@ public class StudentController {
      * HTTP: PUT /api/students/{id}
      */
     @PutMapping("/{id}")
+    @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('LIBRARIAN','ADMIN')")
     public ResponseEntity<Student> updateStudent(@PathVariable Long id, @RequestBody Student studentDetails) {
         try {
             Optional<Student> updated = studentService.updateStudent(id, studentDetails);
@@ -95,6 +97,7 @@ public class StudentController {
      * HTTP: DELETE /api/students/{id}
      */
     @DeleteMapping("/{id}")
+    @org.springframework.security.access.prepost.PreAuthorize("hasAnyRole('LIBRARIAN','ADMIN')")
     public ResponseEntity<Void> deleteStudent(@PathVariable Long id) {
         if (studentService.deleteStudent(id)) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
