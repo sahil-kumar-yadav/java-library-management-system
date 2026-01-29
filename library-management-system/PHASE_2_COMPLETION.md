@@ -159,7 +159,7 @@ mvn spring-boot:run
 
 ### 2. Open the Dashboard
 ```
-http://localhost:8080/index.html
+https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/index.html
 ```
 
 ### 3. Add Sample Data
@@ -182,32 +182,32 @@ http://localhost:8080/index.html
 
 ### Create Loan via cURL
 ```bash
-curl -X POST "http://localhost:8080/api/loans?studentId=1&bookId=1"
+curl -X POST "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans?studentId=1&bookId=1"
 ```
 
 ### View Active Loans
 ```bash
-curl http://localhost:8080/api/loans/active | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/active | jq .
 ```
 
 ### Return a Book
 ```bash
-curl -X PUT http://localhost:8080/api/loans/1/return
+curl -X PUT https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/1/return
 ```
 
 ### Check Overdue Loans
 ```bash
-curl http://localhost:8080/api/loans/overdue | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/overdue | jq .
 ```
 
 ### Create Reservation
 ```bash
-curl -X POST "http://localhost:8080/api/reservations?studentId=1&bookId=1"
+curl -X POST "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/reservations?studentId=1&bookId=1"
 ```
 
 ### Cancel Reservation
 ```bash
-curl -X PUT http://localhost:8080/api/reservations/1/cancel
+curl -X PUT https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/reservations/1/cancel
 ```
 
 ## 📊 Database Tables

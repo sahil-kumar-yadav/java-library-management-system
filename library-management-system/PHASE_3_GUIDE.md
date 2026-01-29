@@ -239,7 +239,7 @@ PageResponse<Loan> getStudentLoansWithPagination(Long studentId, int page, int s
 
 ### Search Books by Title or Author
 ```bash
-curl "http://localhost:8000/api/books/search/query?query=spring"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/query?query=spring"
 ```
 
 **Response:**
@@ -264,7 +264,7 @@ curl "http://localhost:8000/api/books/search/query?query=spring"
 
 ### Get Available Books with Pagination
 ```bash
-curl "http://localhost:8000/api/books/available/paginated?page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/available/paginated?page=0&size=10"
 ```
 
 **Response:**
@@ -282,17 +282,17 @@ curl "http://localhost:8000/api/books/available/paginated?page=0&size=10"
 
 ### Search Active Students with Pagination
 ```bash
-curl "http://localhost:8000/api/students/search/paginated?query=alex&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/search/paginated?query=alex&page=0&size=10"
 ```
 
 ### Get Loans Due This Week
 ```bash
-curl "http://localhost:8000/api/loans/due/between?startDate=2026-01-28T00:00:00&endDate=2026-02-04T23:59:59"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/due/between?startDate=2026-01-28T00:00:00&endDate=2026-02-04T23:59:59"
 ```
 
 ### Get Student's Active Loans Count
 ```bash
-curl "http://localhost:8000/api/loans/student/1/count-active"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/student/1/count-active"
 ```
 
 **Response:**
@@ -302,7 +302,7 @@ curl "http://localhost:8000/api/loans/student/1/count-active"
 
 ### Sort Books by Author Descending with Pagination
 ```bash
-curl "http://localhost:8000/api/books/sorted/author?asc=false&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/sorted/author?asc=false&page=0&size=10"
 ```
 
 ## 🧪 Testing Guide
@@ -310,39 +310,39 @@ curl "http://localhost:8000/api/books/sorted/author?asc=false&page=0&size=10"
 ### Test 1: Search for Books
 ```bash
 # Add some books first
-curl -X POST http://localhost:8000/api/books \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books \
   -H "Content-Type: application/json" \
   -d '{"title":"Spring Boot Guide","author":"Mark Heckler","isbn":"123"}'
 
 # Search
-curl "http://localhost:8000/api/books/search/query?query=spring"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/query?query=spring"
 ```
 
 ### Test 2: Pagination
 ```bash
 # Get first page
-curl "http://localhost:8000/api/books/available/paginated?page=0&size=5"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/available/paginated?page=0&size=5"
 
 # Get second page
-curl "http://localhost:8000/api/books/available/paginated?page=1&size=5"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/available/paginated?page=1&size=5"
 ```
 
 ### Test 3: Sorting
 ```bash
 # Sort ascending (A-Z)
-curl "http://localhost:8000/api/books/sorted/title?asc=true&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/sorted/title?asc=true&page=0&size=10"
 
 # Sort descending (Z-A)
-curl "http://localhost:8000/api/books/sorted/title?asc=false&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/sorted/title?asc=false&page=0&size=10"
 ```
 
 ### Test 4: Advanced Student Search
 ```bash
 # Search by pattern
-curl "http://localhost:8000/api/students/search/rollpattern?pattern=CS"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/search/rollpattern?pattern=CS"
 
 # Count active
-curl "http://localhost:8000/api/students/active/count"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/active/count"
 ```
 
 ## 🎓 Key Concepts Learned

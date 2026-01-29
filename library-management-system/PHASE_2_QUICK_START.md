@@ -12,7 +12,7 @@ Wait 10 seconds for startup...
 
 ### 2. Open Dashboard
 ```
-http://localhost:8080/index.html
+https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/index.html
 ```
 
 ### 3. Try It Out!
@@ -66,12 +66,12 @@ Updates automatically as you create/return items!
 
 ### List All Books
 ```bash
-curl http://localhost:8080/api/books | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books | jq .
 ```
 
 ### Create Book
 ```bash
-curl -X POST http://localhost:8080/api/books \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Spring in Action",
@@ -82,7 +82,7 @@ curl -X POST http://localhost:8080/api/books \
 
 ### Create Student
 ```bash
-curl -X POST http://localhost:8080/api/students \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Sarah Ahmed",
@@ -93,42 +93,42 @@ curl -X POST http://localhost:8080/api/students \
 
 ### Create Loan (borrow a book)
 ```bash
-curl -X POST "http://localhost:8080/api/loans?studentId=1&bookId=1"
+curl -X POST "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans?studentId=1&bookId=1"
 ```
 
 ### View All Active Loans
 ```bash
-curl http://localhost:8080/api/loans/active | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/active | jq .
 ```
 
 ### Return a Book
 ```bash
-curl -X PUT http://localhost:8080/api/loans/1/return
+curl -X PUT https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/1/return
 ```
 
 ### View Student's Loans
 ```bash
-curl http://localhost:8080/api/loans/student/1 | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/student/1 | jq .
 ```
 
 ### Check for Overdue Loans
 ```bash
-curl http://localhost:8080/api/loans/overdue | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/overdue | jq .
 ```
 
 ### Create Reservation
 ```bash
-curl -X POST "http://localhost:8080/api/reservations?studentId=1&bookId=1"
+curl -X POST "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/reservations?studentId=1&bookId=1"
 ```
 
 ### View Reservation Queue for a Book
 ```bash
-curl http://localhost:8080/api/reservations/book/1/active | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/reservations/book/1/active | jq .
 ```
 
 ### Cancel Reservation
 ```bash
-curl -X PUT http://localhost:8080/api/reservations/1/cancel
+curl -X PUT https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/reservations/1/cancel
 ```
 
 ## 🎯 Common Workflows
@@ -248,37 +248,37 @@ curl -X PUT http://localhost:8080/api/reservations/1/cancel
 ### Get stats for dashboard
 ```bash
 # Total books
-curl http://localhost:8080/api/books/count
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/count
 
 # Total students
-curl http://localhost:8080/api/students/count
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/count
 
 # Active loans
-curl http://localhost:8080/api/loans/active | jq 'length'
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/active | jq 'length'
 
 # Active reservations
-curl http://localhost:8080/api/reservations/active | jq 'length'
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/reservations/active | jq 'length'
 ```
 
 ### Monitor specific student
 ```bash
 # Get all loans for student ID 1
-curl http://localhost:8080/api/loans/student/1 | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/student/1 | jq .
 
 # Get active loans only
-curl http://localhost:8080/api/loans/student/1/active | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/student/1/active | jq .
 
 # Get reservations
-curl http://localhost:8080/api/reservations/student/1 | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/reservations/student/1 | jq .
 ```
 
 ### Book tracking
 ```bash
 # All loans for book ID 1
-curl http://localhost:8080/api/loans/book/1 | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/book/1 | jq .
 
 # Current reservation queue
-curl http://localhost:8080/api/reservations/book/1/active | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/reservations/book/1/active | jq .
 ```
 
 ## 🎓 What You're Learning
@@ -322,7 +322,7 @@ mvn spring-boot:run
 ### Dashboard not loading?
 ```bash
 # Check if app is running
-curl http://localhost:8080/api/books
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books
 
 # Should return: [] (empty array) or [{ book objects }]
 ```
@@ -333,7 +333,7 @@ curl http://localhost:8080/api/books
 netstat -an | grep 8080
 
 # Try directly
-curl http://localhost:8080/api/loans
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans
 ```
 
 ## 🎉 Next Steps

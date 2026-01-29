@@ -144,7 +144,7 @@ private List<Loan> loans;
 
 ### Access the UI
 ```
-http://localhost:8080/index.html
+https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/index.html
 ```
 
 ### Tabs Available:
@@ -229,32 +229,32 @@ public Loan returnBook(Long loanId) {
 ### Test 1: Create a Loan
 ```bash
 # Create book first
-curl -X POST http://localhost:8080/api/books \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books \
   -H "Content-Type: application/json" \
   -d '{"title":"Spring in Action","author":"Craig Walls","isbn":"978-1617294945"}'
 
 # Create student first
-curl -X POST http://localhost:8080/api/students \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students \
   -H "Content-Type: application/json" \
   -d '{"name":"Sarah","email":"sarah@example.com","rollNumber":"CS2024001"}'
 
 # Create loan (use actual IDs)
-curl -X POST "http://localhost:8080/api/loans?studentId=1&bookId=1"
+curl -X POST "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans?studentId=1&bookId=1"
 ```
 
 ### Test 2: Check Active Loans
 ```bash
-curl http://localhost:8080/api/loans/active | jq .
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/active | jq .
 ```
 
 ### Test 3: Return a Book
 ```bash
-curl -X PUT http://localhost:8080/api/loans/1/return
+curl -X PUT https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/1/return
 ```
 
 ### Test 4: Create Reservation
 ```bash
-curl -X POST "http://localhost:8080/api/reservations?studentId=1&bookId=1"
+curl -X POST "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/reservations?studentId=1&bookId=1"
 ```
 
 ## 📁 Project Structure - Phase 2

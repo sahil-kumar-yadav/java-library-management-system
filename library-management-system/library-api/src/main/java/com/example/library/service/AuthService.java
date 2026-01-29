@@ -34,7 +34,7 @@ public class AuthService implements UserDetailsService {
     public AuthService(UserRepository userRepository,
                        StudentRepository studentRepository,
                        PasswordEncoder passwordEncoder,
-                       AuthenticationManager authenticationManager,
+                       @org.springframework.context.annotation.Lazy AuthenticationManager authenticationManager,
                        JwtUtil jwtUtil) {
         this.userRepository = userRepository;
         this.studentRepository = studentRepository;

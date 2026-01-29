@@ -53,14 +53,14 @@ Key goals:
 
 1) Register user
 ```bash
-curl -X POST http://localhost:8000/api/auth/register \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/auth/register \
   -H 'Content-Type: application/json' \
   -d '{"username":"librarian","password":"pass","roles":["LIBRARIAN"]}'
 ```
 
 2) Login
 ```bash
-curl -X POST http://localhost:8000/api/auth/login \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/auth/login \
   -H 'Content-Type: application/json' \
   -d '{"username":"librarian","password":"pass"}'
 ```
@@ -71,12 +71,12 @@ Response:
 
 3) Use token
 ```bash
-curl -H "Authorization: Bearer <accessToken>" http://localhost:8000/api/books
+curl -H "Authorization: Bearer <accessToken>" https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books
 ```
 
 4) Refresh
 ```bash
-curl -X POST http://localhost:8000/api/auth/refresh -d "<refreshToken>"
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/auth/refresh -d "<refreshToken>"
 ```
 
 ## Notes and Next Steps
@@ -86,3 +86,14 @@ curl -X POST http://localhost:8000/api/auth/refresh -d "<refreshToken>"
 - Add role enforcement to endpoints as needed
 - Add UI login flow and token storage (httpOnly cookies recommended)
 
+Configuration: CORS
+
+- The application reads `cors.allowed-origins` from `application.properties` (comma-separated). Example:
+
+```
+cors.allowed-origins=https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev,https://example.com
+```
+
+- You can also set the property using environment variables or profiles. Spring Boot relaxed binding maps `CORS_ALLOWED_ORIGINS` (env var) to `cors.allowed-origins` (property), e.g.: `export CORS_ALLOWED_ORIGINS=https://example.com`.
+
+This controls which front-end origins are allowed to make cross-origin requests (useful for the Codespaces dashboard).

@@ -28,19 +28,19 @@ Build ONE expandable Spring Boot application to learn backend development from b
 ### Advanced Search
 ```bash
 # Search books by title or author
-curl "http://localhost:8000/api/books/search/query?query=spring"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/query?query=spring"
 
 # Search students by name or email
-curl "http://localhost:8000/api/students/search/query?query=john"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/search/query?query=john"
 
 # Pattern matching on roll numbers
-curl "http://localhost:8000/api/students/search/rollpattern?pattern=CS"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/search/rollpattern?pattern=CS"
 ```
 
 ### Pagination
 ```bash
 # Paginated book search
-curl "http://localhost:8000/api/books/search/paginated?query=java&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/paginated?query=java&page=0&size=10"
 
 Response includes: content, pageNumber, pageSize, totalElements, totalPages, hasNext, hasPrevious
 ```
@@ -48,22 +48,22 @@ Response includes: content, pageNumber, pageSize, totalElements, totalPages, has
 ### Sorting
 ```bash
 # Sort books by title (A-Z)
-curl "http://localhost:8000/api/books/sorted/title?asc=true&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/sorted/title?asc=true&page=0&size=10"
 
 # Sort students by name (Z-A)
-curl "http://localhost:8000/api/students/sorted/name?asc=false&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/sorted/name?asc=false&page=0&size=10"
 ```
 
 ### Advanced Loan Queries
 ```bash
 # Get loans due between dates
-curl "http://localhost:8000/api/loans/due/between?startDate=2026-01-28T00:00:00&endDate=2026-02-28T23:59:59"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/due/between?startDate=2026-01-28T00:00:00&endDate=2026-02-28T23:59:59"
 
 # Get student's active loan count
-curl "http://localhost:8000/api/loans/student/1/count-active"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/student/1/count-active"
 
 # Get recently returned loans
-curl "http://localhost:8000/api/loans/recently-returned"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/recently-returned"
 ```
 
 ---
@@ -86,7 +86,7 @@ mvn clean package -DskipTests
 mvn spring-boot:run
 ```
 
-**Server will start on:** http://localhost:8000 (API) and http://localhost:8000/index.html (Dashboard)
+**Server will start on:** https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev (API) and https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/index.html (Dashboard)
 
 ---
 
@@ -222,12 +222,12 @@ REST Client (curl, browser, Postman)
 ### Add Sample Data
 ```bash
 # Add books
-curl -X POST http://localhost:8000/api/books \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books \
   -H "Content-Type: application/json" \
   -d '{"title":"Spring in Action","author":"Craig Walls","isbn":"123","available":true}'
 
 # Add students
-curl -X POST http://localhost:8000/api/students \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students \
   -H "Content-Type: application/json" \
   -d '{"name":"Alice Johnson","email":"alice@uni.edu","rollNumber":"CS001","active":true}'
 ```
@@ -235,16 +235,16 @@ curl -X POST http://localhost:8000/api/students \
 ### Test Search
 ```bash
 # Full-text book search
-curl "http://localhost:8000/api/books/search/query?query=spring"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/query?query=spring"
 
 # Student pattern matching
-curl "http://localhost:8000/api/students/search/rollpattern?pattern=CS"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/search/rollpattern?pattern=CS"
 ```
 
 ### Test Pagination
 ```bash
 # Paginated search with metadata
-curl "http://localhost:8000/api/books/search/paginated?query=java&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/paginated?query=java&page=0&size=10"
 
 # Response includes: content, pageNumber, pageSize, totalElements, totalPages, hasNext, hasPrevious
 ```
@@ -252,22 +252,22 @@ curl "http://localhost:8000/api/books/search/paginated?query=java&page=0&size=10
 ### Test Sorting
 ```bash
 # Sort ascending
-curl "http://localhost:8000/api/books/sorted/title?asc=true&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/sorted/title?asc=true&page=0&size=10"
 
 # Sort descending
-curl "http://localhost:8000/api/books/sorted/title?asc=false&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/sorted/title?asc=false&page=0&size=10"
 ```
 
 ### Test Advanced Loan Queries
 ```bash
 # Date range queries
-curl "http://localhost:8000/api/loans/due/between?startDate=2026-01-28T00:00:00&endDate=2026-02-28T23:59:59"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/due/between?startDate=2026-01-28T00:00:00&endDate=2026-02-28T23:59:59"
 
 # Student statistics
-curl "http://localhost:8000/api/loans/student/1/count-active"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/student/1/count-active"
 
 # Recent activity
-curl "http://localhost:8000/api/loans/recently-returned"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/recently-returned"
 ```
 
 See [PHASE_3_QUICK_START.md](./PHASE_3_QUICK_START.md) for comprehensive test cases with expected responses.
@@ -423,13 +423,13 @@ mvn clean package -DskipTests
 mvn spring-boot:run
 
 # Access application
-# API: http://localhost:8000/api
-# Dashboard: http://localhost:8000
-# H2 Console: http://localhost:8000/h2-console
+# API: https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api
+# Dashboard: https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev
+# H2 Console: https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/h2-console
 
 # Test endpoints
-curl http://localhost:8000/api/books
-curl "http://localhost:8000/api/books/search/query?query=java"
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/query?query=java"
 ```
 
 ---
@@ -467,7 +467,7 @@ curl "http://localhost:8000/api/books/search/query?query=java"
 **Build Status:** ✅ SUCCESS  
 **Next Phase:** Phase 4 - Authentication & Security
 
-Ready to start? Run `mvn spring-boot:run` and visit http://localhost:8000!
+Ready to start? Run `mvn spring-boot:run` and visit https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev!
 
 By the end of Phase 1, you should understand:
 

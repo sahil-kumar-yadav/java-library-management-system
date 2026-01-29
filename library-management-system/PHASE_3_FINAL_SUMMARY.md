@@ -163,9 +163,9 @@ mvn clean package -DskipTests
 mvn spring-boot:run
 
 # 4. Visit
-# Dashboard: http://localhost:8000
-# API: http://localhost:8000/api
-# H2 Console: http://localhost:8000/h2-console
+# Dashboard: https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev
+# API: https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api
+# H2 Console: https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/h2-console
 ```
 
 ---
@@ -325,7 +325,7 @@ mvn clean package -DskipTests
 
 ### Immediate (Next 30 minutes)
 1. Start the application: `mvn spring-boot:run`
-2. Visit http://localhost:8000 (dashboard)
+2. Visit https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev (dashboard)
 3. Test endpoints using curl or Postman
 4. Follow [PHASE_3_QUICK_START.md](PHASE_3_QUICK_START.md)
 

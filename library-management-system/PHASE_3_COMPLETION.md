@@ -541,17 +541,17 @@ mvn spring-boot:run
 #### 2. Add Sample Data
 ```bash
 # Add books
-curl -X POST http://localhost:8000/api/books \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books \
   -H "Content-Type: application/json" \
   -d '{"title":"Spring in Action","author":"Craig Walls","isbn":"123","available":true}'
 
 # Add students
-curl -X POST http://localhost:8000/api/students \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students \
   -H "Content-Type: application/json" \
   -d '{"name":"Alice Johnson","email":"alice@uni.edu","rollNumber":"CS001","active":true}'
 
 # Create loans
-curl -X POST http://localhost:8000/api/loans \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans \
   -H "Content-Type: application/json" \
   -d '{"studentId":1,"bookId":1,"dueDate":"2026-02-28T23:59:59"}'
 ```
@@ -559,22 +559,22 @@ curl -X POST http://localhost:8000/api/loans \
 #### 3. Test New Phase 3 Endpoints
 ```bash
 # Search
-curl "http://localhost:8000/api/books/search/query?query=spring"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/query?query=spring"
 
 # Pagination
-curl "http://localhost:8000/api/books/available/paginated?page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/available/paginated?page=0&size=10"
 
 # Sorting
-curl "http://localhost:8000/api/books/sorted/title?asc=true&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/sorted/title?asc=true&page=0&size=10"
 
 # Advanced Loans
-curl "http://localhost:8000/api/loans/active/sorted"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/active/sorted"
 
 # Date Range
-curl "http://localhost:8000/api/loans/due/between?startDate=2026-01-28T00:00:00&endDate=2026-02-28T23:59:59"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/due/between?startDate=2026-01-28T00:00:00&endDate=2026-02-28T23:59:59"
 
 # Counting
-curl "http://localhost:8000/api/students/active/count"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/active/count"
 ```
 
 ## 🎓 Learning Outcomes

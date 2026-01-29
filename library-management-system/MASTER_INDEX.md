@@ -13,7 +13,7 @@
    cd library-api
    mvn spring-boot:run
    ```
-3. Visit: http://localhost:8000 (Dashboard) or http://localhost:8000/api (API)
+3. Visit: https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev (Dashboard) or https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api (API)
 
 ### For Phase Testing (30 minutes)
 1. **Phase 1:** [PHASE_1_QUICK_START.md](PHASE_1_QUICK_START.md) - Basic CRUD testing
@@ -82,7 +82,7 @@
    ↓
 3. Test: Phase 2 endpoints (PHASE_2_QUICK_START.md)
    ↓
-4. Dashboard: Open http://localhost:8000
+4. Dashboard: Open https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev
    ↓
 5. Explore: Try creating loans and reservations
 ```
@@ -141,49 +141,49 @@
 ### Phase 1: Basic CRUD
 ```bash
 # Create a book
-curl -X POST http://localhost:8000/api/books \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books \
   -H "Content-Type: application/json" \
   -d '{"title":"Spring in Action","author":"Craig Walls","isbn":"123","available":true}'
 
 # Get all books
-curl http://localhost:8000/api/books
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books
 
 # Search by title
-curl "http://localhost:8000/api/books/search/title/Spring"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/title/Spring"
 ```
 
 ### Phase 2: Relationships
 ```bash
 # Create a student
-curl -X POST http://localhost:8000/api/students \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students \
   -H "Content-Type: application/json" \
   -d '{"name":"Alice","email":"alice@uni.edu","rollNumber":"CS001","active":true}'
 
 # Create a loan (borrow a book)
-curl -X POST http://localhost:8000/api/loans \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans \
   -H "Content-Type: application/json" \
   -d '{"studentId":1,"bookId":1,"dueDate":"2026-02-28T23:59:59"}'
 
 # Get student's loans
-curl http://localhost:8000/api/loans/student/1
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/student/1
 ```
 
 ### Phase 3: Advanced Queries
 ```bash
 # Full-text search
-curl "http://localhost:8000/api/books/search/query?query=spring"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/query?query=spring"
 
 # Paginated search
-curl "http://localhost:8000/api/books/search/paginated?query=java&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/paginated?query=java&page=0&size=10"
 
 # Sort by title
-curl "http://localhost:8000/api/books/sorted/title?asc=true&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/sorted/title?asc=true&page=0&size=10"
 
 # Advanced loan queries
-curl "http://localhost:8000/api/loans/active/sorted"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/active/sorted"
 
 # Date range
-curl "http://localhost:8000/api/loans/due/between?startDate=2026-01-01T00:00:00&endDate=2026-03-01T23:59:59"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/due/between?startDate=2026-01-01T00:00:00&endDate=2026-03-01T23:59:59"
 ```
 
 ---
@@ -322,7 +322,7 @@ Maven 3.8+ (Build Tool)
 ### To Get Started NOW:
 1. `cd library-api`
 2. `mvn spring-boot:run`
-3. Visit http://localhost:8000
+3. Visit https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev
 4. Follow [PHASE_3_QUICK_START.md](PHASE_3_QUICK_START.md) for testing
 
 ### To Learn More:

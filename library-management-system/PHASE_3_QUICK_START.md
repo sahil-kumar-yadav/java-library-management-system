@@ -15,14 +15,14 @@ mvn spring-boot:run
 
 ### 3. Open Dashboard
 ```
-http://localhost:8000
+https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev
 ```
 
 ## 📌 Test with Sample Data
 
 ### Add Sample Books
 ```bash
-curl -X POST http://localhost:8000/api/books \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Spring in Action",
@@ -31,7 +31,7 @@ curl -X POST http://localhost:8000/api/books \
     "available": true
   }'
 
-curl -X POST http://localhost:8000/api/books \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Effective Java",
@@ -40,7 +40,7 @@ curl -X POST http://localhost:8000/api/books \
     "available": true
   }'
 
-curl -X POST http://localhost:8000/api/books \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books \
   -H "Content-Type: application/json" \
   -d '{
     "title": "Clean Code",
@@ -52,7 +52,7 @@ curl -X POST http://localhost:8000/api/books \
 
 ### Add Sample Students
 ```bash
-curl -X POST http://localhost:8000/api/students \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Alice Johnson",
@@ -61,7 +61,7 @@ curl -X POST http://localhost:8000/api/students \
     "active": true
   }'
 
-curl -X POST http://localhost:8000/api/students \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Bob Smith",
@@ -70,7 +70,7 @@ curl -X POST http://localhost:8000/api/students \
     "active": true
   }'
 
-curl -X POST http://localhost:8000/api/students \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students \
   -H "Content-Type: application/json" \
   -d '{
     "name": "Charlie Brown",
@@ -86,7 +86,7 @@ curl -X POST http://localhost:8000/api/students \
 
 #### Search by Title or Author (any book with "spring" or "craig")
 ```bash
-curl "http://localhost:8000/api/books/search/query?query=spring"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/query?query=spring"
 ```
 
 **Expected Response:**
@@ -104,12 +104,12 @@ curl "http://localhost:8000/api/books/search/query?query=spring"
 
 #### Search by Title AND Author (must match both)
 ```bash
-curl "http://localhost:8000/api/books/search/advanced?title=Spring&author=Craig"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/advanced?title=Spring&author=Craig"
 ```
 
 #### Search with Pagination
 ```bash
-curl "http://localhost:8000/api/books/search/paginated?query=java&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/search/paginated?query=java&page=0&size=10"
 ```
 
 **Expected Response:**
@@ -135,17 +135,17 @@ curl "http://localhost:8000/api/books/search/paginated?query=java&page=0&size=10
 
 #### Get Available Books (with Pagination)
 ```bash
-curl "http://localhost:8000/api/books/available/paginated?page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/available/paginated?page=0&size=10"
 ```
 
 #### Get Unavailable Books (with Pagination)
 ```bash
-curl "http://localhost:8000/api/books/unavailable/paginated?page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/unavailable/paginated?page=0&size=10"
 ```
 
 #### Sort Books by Title (Ascending A-Z)
 ```bash
-curl "http://localhost:8000/api/books/sorted/title?asc=true&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/sorted/title?asc=true&page=0&size=10"
 ```
 
 **Expected Response Shows Books in Order:**
@@ -182,12 +182,12 @@ curl "http://localhost:8000/api/books/sorted/title?asc=true&page=0&size=10"
 
 #### Sort Books by Title (Descending Z-A)
 ```bash
-curl "http://localhost:8000/api/books/sorted/title?asc=false&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/sorted/title?asc=false&page=0&size=10"
 ```
 
 #### Sort Books by Author
 ```bash
-curl "http://localhost:8000/api/books/sorted/author?asc=true&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/sorted/author?asc=true&page=0&size=10"
 ```
 
 ---
@@ -196,7 +196,7 @@ curl "http://localhost:8000/api/books/sorted/author?asc=true&page=0&size=10"
 
 #### Search by Name or Email
 ```bash
-curl "http://localhost:8000/api/students/search/query?query=alice"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/search/query?query=alice"
 ```
 
 **Expected Response:**
@@ -214,7 +214,7 @@ curl "http://localhost:8000/api/students/search/query?query=alice"
 
 #### Search by Roll Number Pattern (starts with "CS")
 ```bash
-curl "http://localhost:8000/api/students/search/rollpattern?pattern=CS"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/search/rollpattern?pattern=CS"
 ```
 
 **Expected Response:** Alice (CS001) and Bob (CS002) but NOT Charlie (CSE003)
@@ -237,22 +237,22 @@ curl "http://localhost:8000/api/students/search/rollpattern?pattern=CS"
 
 #### Get Active Students (with Pagination)
 ```bash
-curl "http://localhost:8000/api/students/active/paginated?page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/active/paginated?page=0&size=10"
 ```
 
 #### Get Inactive Students (with Pagination)
 ```bash
-curl "http://localhost:8000/api/students/inactive/paginated?page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/inactive/paginated?page=0&size=10"
 ```
 
 #### Search Students with Pagination
 ```bash
-curl "http://localhost:8000/api/students/search/paginated?query=john&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/search/paginated?query=john&page=0&size=10"
 ```
 
 #### Sort Students by Name (Ascending A-Z)
 ```bash
-curl "http://localhost:8000/api/students/sorted/name?asc=true&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/sorted/name?asc=true&page=0&size=10"
 ```
 
 **Expected Response:**
@@ -292,12 +292,12 @@ curl "http://localhost:8000/api/students/sorted/name?asc=true&page=0&size=10"
 
 #### Sort Students by Roll Number (Descending Z-A)
 ```bash
-curl "http://localhost:8000/api/students/sorted/rollnumber?asc=false&page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/sorted/rollnumber?asc=false&page=0&size=10"
 ```
 
 #### Count Active Students
 ```bash
-curl "http://localhost:8000/api/students/active/count"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students/active/count"
 ```
 
 **Expected Response:**
@@ -312,7 +312,7 @@ curl "http://localhost:8000/api/students/active/count"
 #### First, Create Some Loans
 ```bash
 # Create loan: Student 1 borrows Book 1
-curl -X POST http://localhost:8000/api/loans \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans \
   -H "Content-Type: application/json" \
   -d '{
     "studentId": 1,
@@ -321,7 +321,7 @@ curl -X POST http://localhost:8000/api/loans \
   }'
 
 # Create loan: Student 2 borrows Book 2
-curl -X POST http://localhost:8000/api/loans \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans \
   -H "Content-Type: application/json" \
   -d '{
     "studentId": 2,
@@ -330,7 +330,7 @@ curl -X POST http://localhost:8000/api/loans \
   }'
 
 # Create loan: Student 1 borrows Book 3
-curl -X POST http://localhost:8000/api/loans \
+curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans \
   -H "Content-Type: application/json" \
   -d '{
     "studentId": 1,
@@ -341,7 +341,7 @@ curl -X POST http://localhost:8000/api/loans \
 
 #### Get Active Loans Sorted by Due Date
 ```bash
-curl "http://localhost:8000/api/loans/active/sorted"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/active/sorted"
 ```
 
 **Expected Response:** Loans sorted by dueDate ascending
@@ -373,7 +373,7 @@ curl "http://localhost:8000/api/loans/active/sorted"
 
 #### Get Loans Due Between Dates
 ```bash
-curl "http://localhost:8000/api/loans/due/between?startDate=2026-01-28T00:00:00&endDate=2026-03-01T23:59:59"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/due/between?startDate=2026-01-28T00:00:00&endDate=2026-03-01T23:59:59"
 ```
 
 **Expected Response:** Loans 1 and 3 (due within this range)
@@ -398,7 +398,7 @@ curl "http://localhost:8000/api/loans/due/between?startDate=2026-01-28T00:00:00&
 
 #### Get Student's Loans Sorted
 ```bash
-curl "http://localhost:8000/api/loans/student/1/sorted"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/student/1/sorted"
 ```
 
 **Expected Response:** All loans for Student 1, sorted by loan date (newest first)
@@ -423,7 +423,7 @@ curl "http://localhost:8000/api/loans/student/1/sorted"
 
 #### Count Active Loans for Student
 ```bash
-curl "http://localhost:8000/api/loans/student/1/count-active"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/student/1/count-active"
 ```
 
 **Expected Response:**
@@ -433,29 +433,29 @@ curl "http://localhost:8000/api/loans/student/1/count-active"
 
 #### Get All Loans with Pagination
 ```bash
-curl "http://localhost:8000/api/loans/paginated?page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/paginated?page=0&size=10"
 ```
 
 #### Get Active Loans with Pagination
 ```bash
-curl "http://localhost:8000/api/loans/active/paginated?page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/active/paginated?page=0&size=10"
 ```
 
 #### Get Overdue Loans with Pagination
 ```bash
-curl "http://localhost:8000/api/loans/overdue/paginated?page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/overdue/paginated?page=0&size=10"
 ```
 
 **Note:** Loan is overdue if dueDate < NOW and isReturned = false
 
 #### Get Student's Loans with Pagination
 ```bash
-curl "http://localhost:8000/api/loans/student/1/paginated?page=0&size=10"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/student/1/paginated?page=0&size=10"
 ```
 
 #### Get Recently Returned Loans
 ```bash
-curl "http://localhost:8000/api/loans/recently-returned"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans/recently-returned"
 ```
 
 ---
@@ -467,7 +467,7 @@ curl "http://localhost:8000/api/loans/recently-returned"
 #### Step 1: Add 15 Books
 ```bash
 for i in {1..15}; do
-  curl -X POST http://localhost:8000/api/books \
+  curl -X POST https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books \
     -H "Content-Type: application/json" \
     -d "{\"title\": \"Book $i\", \"author\": \"Author $i\", \"isbn\": \"ISBN$i\", \"available\": true}"
 done
@@ -475,7 +475,7 @@ done
 
 #### Step 2: Get Page 1 (Size 5)
 ```bash
-curl "http://localhost:8000/api/books/available/paginated?page=0&size=5"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/available/paginated?page=0&size=5"
 ```
 
 **Response Should Show:**
@@ -493,7 +493,7 @@ curl "http://localhost:8000/api/books/available/paginated?page=0&size=5"
 
 #### Step 3: Get Page 2
 ```bash
-curl "http://localhost:8000/api/books/available/paginated?page=1&size=5"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/available/paginated?page=1&size=5"
 ```
 
 **Response Should Show:**
@@ -511,7 +511,7 @@ curl "http://localhost:8000/api/books/available/paginated?page=1&size=5"
 
 #### Step 4: Get Page 3 (Last Page)
 ```bash
-curl "http://localhost:8000/api/books/available/paginated?page=2&size=5"
+curl "https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books/available/paginated?page=2&size=5"
 ```
 
 **Response Should Show:**
@@ -563,7 +563,7 @@ curl "http://localhost:8000/api/books/available/paginated?page=2&size=5"
 
 - [ ] Build successful: `mvn clean package`
 - [ ] Application runs: `mvn spring-boot:run`
-- [ ] Dashboard loads: `http://localhost:8000`
+- [ ] Dashboard loads: `https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev`
 - [ ] Add sample books
 - [ ] Add sample students
 - [ ] Test book search

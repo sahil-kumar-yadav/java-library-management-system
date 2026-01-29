@@ -211,21 +211,21 @@ cd /workspaces/codespaces-blank/library-management-system/library-api
 mvn spring-boot:run
 ```
 
-Then open: `http://localhost:8080/index.html`
+Then open: `https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/index.html`
 
 ### Option 2: API Testing with cURL
 ```bash
 # List all books
-curl http://localhost:8080/api/books
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/books
 
 # List all students
-curl http://localhost:8080/api/students
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/students
 
 # List all loans
-curl http://localhost:8080/api/loans
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/loans
 
 # List all reservations
-curl http://localhost:8080/api/reservations
+curl https://studious-lamp-6654w7vjgxv3gp-8000.app.github.dev/api/reservations
 ```
 
 ### Option 3: Full Build
